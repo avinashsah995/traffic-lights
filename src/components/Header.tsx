@@ -23,7 +23,9 @@ const navItems = [
     { name: 'Resume', link: '/pdf/AVINASH SAH.pdf', type: 'download' }
 ];
 
-interface HeaderProps {}
+interface HeaderProps {
+    window?: () => Window;
+}
 
 const Header: FC<HeaderProps> = () => {
 
