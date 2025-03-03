@@ -51,7 +51,6 @@ const Header: FC<HeaderProps> = () => {
             document.body.removeChild(link);
         }
     };
-    
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -78,12 +77,10 @@ const Header: FC<HeaderProps> = () => {
             <CssBaseline />
             <AppBar component="nav" sx={{ backgroundColor: 'black', color: 'white' }}>
                 <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    {/* Logo on the left */}
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Image src="/images/logo.svg" width={160} height={40} alt="logo" />
                     </Box>
 
-                    {/* Navigation items on the right */}
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map((item) => (
                             <Button key={item.name} sx={{ color: 'white' }} onClick={() => handleClick(item)}>
@@ -92,7 +89,6 @@ const Header: FC<HeaderProps> = () => {
                         ))}
                     </Box>
 
-                    {/* Mobile menu icon (only visible on small screens) */}
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
