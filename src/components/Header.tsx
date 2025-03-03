@@ -16,21 +16,40 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Image from 'next/image';
 
 const drawerWidth = 240;
-const navItems = ['Linkedin', 'Github', 'Email', 'Resume'];
+const navItems = [
+    { name: 'Linkedin', link: 'https://www.linkedin.com/in/avinashsah995/', type: 'external' },
+    { name: 'Github', link: 'https://github.com/avinashsah995', type: 'external' },
+    { name: 'Email', link: 'mailto:sahavinash977@gmail.com', type: 'email' },
+    { name: 'Resume', link: '/pdf/AVINASH SAH.pdf', type: 'download' }
+];
 
-interface HeaderProps {
-    window?: () => Window;
-}
+interface HeaderProps {}
 
+const Header: FC<HeaderProps> = () => {
 
-const Header: FC<HeaderProps> = ({ window }) => {
-
-    // const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen((prevState) => !prevState);
     };
+
+    const handleClick = (item: { name: string; link: string; type: string }) => {
+        if (typeof window === 'undefined') return;
+    
+        if (item.type === 'external') {
+            window.open(item.link, '_blank');
+        } else if (item.type === 'email') {
+            window.location.href = item.link;
+        } else if (item.type === 'download') {
+            const link = document.createElement('a');
+            link.href = item.link;
+            link.download = 'Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+    
 
     const drawer = (
         <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -40,9 +59,9 @@ const Header: FC<HeaderProps> = ({ window }) => {
             <Divider />
             <List>
                 {navItems.map((item) => (
-                    <ListItem key={item} disablePadding>
-                        <ListItemButton sx={{ textAlign: 'center' }}>
-                            <ListItemText primary={item} />
+                    <ListItem key={item.name} disablePadding>
+                        <ListItemButton sx={{ textAlign: 'center' }} onClick={() => handleClick(item)}>
+                            <ListItemText primary={item.name} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -50,7 +69,7 @@ const Header: FC<HeaderProps> = ({ window }) => {
         </Box>
     );
 
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const container = typeof window !== 'undefined' ? document.body : undefined;
 
     return (
         <Box sx={{ display: 'flex' }}>
@@ -65,8 +84,8 @@ const Header: FC<HeaderProps> = ({ window }) => {
                     {/* Navigation items on the right */}
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                         {navItems.map((item) => (
-                            <Button key={item} sx={{ color: 'white' }}>
-                                {item}
+                            <Button key={item.name} sx={{ color: 'white' }} onClick={() => handleClick(item)}>
+                                {item.name}
                             </Button>
                         ))}
                     </Box>
