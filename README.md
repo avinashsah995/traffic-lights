@@ -1,6 +1,6 @@
 # Traffic Light Simulation
 
-[![Deployed Application](#)](YOUR_DEPLOYED_LINK_HERE)
+[![Deployed Application](#)](https://traffic-lights-2qyyvapl4-avinashsah995s-projects.vercel.app/)
 
 ## Description
 A traffic light simulation built with Next.js and React that cycles through green, yellow, and red lights with custom timing and allows manual control.
@@ -16,7 +16,7 @@ A traffic light simulation built with Next.js and React that cycles through gree
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/YOUR_GITHUB_USERNAME/traffic-light-simulation.git
+   git clone https://github.com/avinashsah995/traffic-lights.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -38,7 +38,7 @@ A traffic light simulation built with Next.js and React that cycles through gree
 
 ## Deployment
 The project is deployed at:
-[YOUR_DEPLOYED_LINK_HERE](YOUR_DEPLOYED_LINK_HERE)
+[YOUR_DEPLOYED_LINK_HERE] https://traffic-lights-2qyyvapl4-avinashsah995s-projects.vercel.app/
 
 ## Technologies Used
 - Next.js (React Framework)
